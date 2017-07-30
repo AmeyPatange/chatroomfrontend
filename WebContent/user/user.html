@@ -1,0 +1,158 @@
+<style>
+a
+{
+	cursor: pointer;
+}
+.active
+{
+	border-left: 4px solid darkslategray;
+	border-right : 4px solid darkslategray;
+	border-radius: 10px;
+	cursor:  no-drop;
+}
+
+</style>
+		
+
+
+<div class="container-fluid" style="margin-top:4px;" ng-controller="userCtrl as user">
+<hr id="hr1" style="margin:0;border-top: 1px solid gray ; border-bottom:1px solid gray;box-shadow: 1px 1px 10px 1px gray;">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <!--  <li class="active"><a href="#">Home</a></li>-->
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown"><span style="font-size:14.5px;" class="glyphicon glyphicon-file"></span>&nbsp;Blogs<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="user.addBlog" ui-sref-active="active">Post New Blog</a></li>
+            <li><a ui-sref="user.getAllBlogs" ui-sref-active="active">View All Blogs</a></li>
+            <li><a ui-sref="user.updateBlog" ui-sref-active="active">Update Recent Blog</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown"><span style="font-size:15px;" class="fa fa-suitcase"></span>&nbsp;Jobs<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <li><a ui-sref="user.addJob" ui-sref-active="active">Save Jobs</a></li>
+            <li><a ui-sref="user.allJob" ui-sref-active="active">All Jobs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown"><span style="font-size:15px;" class="fa fa-users"></span>&nbsp;Friends<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="user.getFriends" ui-sref-active="active" ng-click="reload()">Suggested Friends</a></li>
+            <li><a ui-sref="user.pendingRequests" ui-sref-active="active">Pending Requests</a></li>
+            <li><a ui-sref="user.allFriends" ui-sref-active="active">All Friends</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" ng-show="user.admin()">
+          <a class="dropdown-toggle" data-toggle="dropdown"><span style="font-size:15px;" class="fa fa-users"></span>&nbsp;Admin<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="user.getAllPendingBlogs" ui-sref-active="active">Approve Blogs</a></li>
+            <li><a ui-sref="user.getAllPendingJobs" ui-sref-active="active">Approve Jobs</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+        	<a class="dropdown-toggle" data-toggle="dropdown"><span style="font-size:14px;" class="glyphicon glyphicon-user"></span>&nbsp;Welcome {{user.userData.fname}} <span class="caret"></span></a>
+        	 <ul class="dropdown-menu">
+            	<li><a ui-sref="user.account" ui-sref-active="active">Home</a></li>
+            	<li><a ng-click="user.prof()">Update Profile</a></li>
+            	<li><a ui-sref="user.chat" ui-sref-active="active">Chat</a>
+           	</ul>
+          </li>
+        <li><a style="cursor:pointer;" ng-click="user.logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div ng-show="user.pro" style="overflow-y: auto ;position:fixed; z-index:2; width : 100%; height: 100%; left:0%; top: 0%; background-color: rgba(0,0,0,0.4);padding: 2%;">
+	
+	<div style="text-align: right; margin-bottom: 5px;">
+		<button ng-click="user.pro=false; user.copy={};" class="btn btn-danger">X</button>
+		
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+			<div class="panel panel-danger" style="text-align:center;">
+				<div class="panel-heading">Profile Pic</div>
+				<div class="panel-body">
+					<div style="margin: 10px; margin-left:20%;text-align:center;">
+						
+						<img src="http://localhost:8085/chatroom/getPic/{{user.copy.email}}/" width="200px" height="200px" class="img-responsive img-circle"/>
+					</div>
+					
+					<form action="http://localhost:8085/chatroom/uploadImage" method="post" enctype="multipart/form-data">
+						<input type="file" name="image" size="50" style="border: none; letter-spacing: 1px; font-family: courier;" class="form-control">
+						<hr/>
+						<input type="submit" value="Upload" class="btn btn-success">
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-12 col-sm-7">
+			<div class="panel panel-warning">
+					<div class="panel-heading" style="text-align:center;">
+						Profile Details
+					</div>	
+					<form name="updateForm" ng-submit="user.update()">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-6">
+								<label>First Name </label>
+								<input required type="text" name="fname" placeholder="First Name" ng-model="user.copy.fname" value="{{user.copy.fname}}"/>
+							</div>
+							<div class="col-xs-6">
+								<label>Last Name </label>
+								<input required type="text" name="lname" ng-model="user.copy.lname" placeholder="Last Name" value="{{user.copy.lname}}"/>
+							</div>
+						</div>
+						<hr/>
+						<div class="row">
+							<div class="col-xs-6">
+								<label>City </label>
+								<input required type="text" name="city" ng-model="user.copy.city" placeholder="City" value="{{user.copy.city}}"/>
+							</div>
+							<div class="col-xs-6">
+								<label>Country </label>
+								<input required type="text" name="country" ng-model="user.copy.country" placeholder="Country" value="{{user.copy.country}}"/>
+							</div>
+						</div>
+						<hr/>
+						<div class="row">
+							<div class="col-xs-6">
+								<label>Contact </label>
+								<input required type="tel" name="mobile" ng-model="user.copy.mobile" placeholder="Contact Number" value="{{user.copy.mobile}}"/>
+							</div>
+							<div class="col-xs-6" style="text-align:center;">
+								<br/>
+								<input type="submit" value="UPDATE" class="btn btn-danger">	
+							</div>
+						</div>
+						
+					</div>
+					</form>
+			</div>
+		</div>
+		
+		
+	</div>
+</div>
+
+</div>
+<script>
+$window.location.reload()
+</script>
+<ui-view></ui-view>
+

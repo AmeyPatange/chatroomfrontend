@@ -1,0 +1,94 @@
+@media (max-width:1030px)
+{
+	#img
+	{
+		display:none;
+	}
+	body
+	{
+		/*background: linear-gradient(to right , darkslategray, darkslategray, lightslategray , darkslategray );
+		*/
+		background-color: white;
+	}
+	.divs2
+	{
+		
+		height: 305px;
+		overflow-y : auto;
+	}
+	#hr1
+	{
+		display: none;
+	}
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+::selection
+{
+	background-color:white;
+	color:Lavender;
+}
+
+
+label
+{
+	letter-spacing:1px;
+	font-family:cursive;
+	color: darkslategray;
+
+}
+
+
+input[type="email"] , input[type="password"] , input[type="text"] , input[type="date"] ,select, select option,
+ input[type="tel"]
+{
+	height: 30px;
+	border: none;
+	width:100%;
+	background-color:white; 
+	border-radius: 10px;
+	border-bottom : 1px solid black;
+	padding: 5px;
+	padding-left : 10px; 
+	font-size : 12px;
+	font-family: courier;
+	letter-spacing: 1px;
+	color: darkslategray;
+}
+.container-fluid
+{
+	background-color: transparent;
+}
+.navbar-default
+{
+	background-color : inherit;
+	border:none;
+}
+
+ .navbar-nav 
+{
+	background : linear-gradient(to top, white , Lavender , white);
+	box-shadow: 1px 2px 7px 1px gray;
+
+}
+.navbar-nav:hover
+{
+		box-shadow: 1px 2px 12px 1px gray;
+}
+.navbar-nav li a
+{
+	font-family:Helvetica;
+	letter-spacing: 1px;
+}
+
+
+.navbar-nav li:hover
+{
+	box-shadow : 1px 1px 7px 1px black;	
+}
+
+

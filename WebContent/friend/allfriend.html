@@ -1,0 +1,62 @@
+<div class="container" ng-controller="friendCtrl as fd" ng-init="fd.init(3)">
+	
+	<div class="row">
+		<div class="col-xs-12 col-sm-5" ng-repeat="li in fd.allFriends" style="box-shadow: 1px 2px 6px 2px gray; margin:5px;padding: 5px; ">
+			<label>{{li[6]}}&nbsp;{{li[8]}}</label><br/>
+			<label>{{li[2]}},&nbsp;{{li[3]}}</label><br/>
+			<button class="btn btn-info" ng-click="fd.profile(li)">View Profile</button>
+		</div>
+		
+		
+	</div>
+	<div ng-show="fd.profileM" style="background-color :rgba(0,0, 0, 0.4);position:fixed; top:0%; left: 0%; width: 100%; height: 100%;">
+		<div class="panel panel-info" style="margin: 5%;">
+			<div class="panel-heading" style="text-align: center; color: Darkslategray; font-family: Courier; font-size: 18px;">
+				{{fd.details[6]}}&nbsp;{{fd.details[8]}}
+				<button class="btn btn-danger" style="float: right;" ng-click="fd.profileM = false">X</button>
+			</div>		
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4" style="line-height: 2;border-right: 1px solid skyblue; ">
+						From<br/>
+						<label>{{fd.details[2]}},&nbsp;{{fd.details[3]}}</label>
+						<hr/>
+						Date Of Birth<br/>
+						<label>{{fd.details[5]}}</label>
+						<hr/>
+						Email<br/>
+						<label>{{fd.details[0]}}</label>
+						<hr/>
+						Gender<br/>
+						<label>{{fd.details[7]}}</label>
+					</div>
+						
+					<div class="col-xs-12 col-sm-8">
+						<div class="row">
+							<div class="col-xs-12" class="col-xs-4 col-xs-offset-4" style="margin: 10px;">
+								<img src="http://localhost:8085/chatroom/getPic/{{fd.details[0]}}/" width="250px" height="250px" class="img-responsive img-circle">
+							</div>		
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="panel panel-info">
+									<div class="panel-heading" style="text-align: center;">
+										Blog Post
+									</div>							
+									<div class="panel-body">
+										<label ng-repeat="blg in fd.details.blogs">{{blg.blogTitle}}&nbsp;|&nbsp;</label>
+										<div ng-show="fd.details.blogs.length == 0" style="text-align: center; font-family: courier;"> No Blogs Added By {{fd.details[6]}}</div>
+									</div>
+								
+								</div>
+							</div>		
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		
+	
+	</div>
+	</div>
+</div>

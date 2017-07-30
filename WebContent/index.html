@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="resources/js/angular.js"></script>
+		<script src="resources/js/ui-router.js"></script>
+		<script src="resources/js/cookies.js"></script>
+		<script src="resources/js/messages.js"></script>
+		<script src="resources/js/app.js"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		 -->
+		<script src="resources/js/jquery-3.2.1.min.js"></script>
+		<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
+		<script src="resources/js/bootstrap.min.js"></script>
+		<link href="resources/css/homedesign.css" rel="stylesheet">
+		
+		<title>ChatRoom</title>
+	</head>
+	<body ng-cloak>
+		<div class="container-fluid" style="box-shadow:1px 1px 5px 1px gray;background: linear-gradient(to right , darkslategray, darkslategray, lightslategray , darkslategray );">
+			<h1 style="text-shadow:1px 2px 10px black; letter-spacing:1px ; font-family:Sigmar One , cursive;color:Lavender;font-size:16px;">
+				Chat<mark style="background-color:slategray;opacity:0.95; border-radius:10px; border-bottom: 1px solid white ; color:white; font-size:18px;">ROOM</mark>
+			</h1>
+		</div>
+		
+		<ui-view></ui-view>
+	
+	
+	 <div ng-init="displayFooter= false;" ng-click="displayFooter = !displayFooter" style="cursor:pointer ;position: fixed; text-align: center; left:45%; background: linear-gradient(to top, white ,white , #eee , Lavender, #eee , white); bottom: 0%;">
+	 	<label style="cursor:pointer ; color: darkslategray ;font-family: courier;">&nbsp;&nbsp;&copy; CHATROOM 2017&nbsp;&nbsp;</label>
+	 
+	 <div ng-show="displayFooter" style="height:20px; padding: 0;"> 
+	 	<label><span class="fa fa-facebook" style="color: blue;font-size: 14px;"></span>&nbsp;
+	 			<span class="fa fa-twitter" style="color: skyblue; font-size: 14px;"></span>&nbsp;
+	 			<span class="fa fa-youtube" style="color: red; font-size: 14px;"></span>&nbsp;
+	 			<span class="fa fa-google" style="color: red; font-size: 14px;"></span></label> 
+	 </div>
+	 
+	 </div>
+		<script src="login/loginService.js"></script>
+		<script src="login/login.js"></script>
+		<script src="user/userService.js"></script>
+		<script src="user/user.js"></script>
+		<script src="user/account.js"></script>
+		<script src="blog/blog.js"></script>
+		<script src="blog/blogService.js"></script>
+		<script src="friend/friend.js"></script>
+		<script src="friend/friendService.js"></script>
+		<script src="job/job.js"></script>
+		<script src="job/jobService.js"></script>
+		
+		<script src="resources/js/sockjs/sockjs.js"></script>
+    	<script src="resources/js/stomp/dist/stomp.js"></script>
+		<script type="text/javascript" src="chat/chatcontroller.js"></script>
+		<script type="text/javascript" src="chat/chatservice.js"></script>
+		
+		

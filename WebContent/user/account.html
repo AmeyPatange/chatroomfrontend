@@ -1,0 +1,56 @@
+<style>
+
+label
+{
+	color: darkslategray;
+	font-family: Monospace;
+	letter-spacing : 1px;
+}
+#div1 , #div2 , #div3 , #div4
+{
+	box-shadow: 1px 2px 5px gray; 
+	border-bottom: 1px solid white;
+}
+
+#div1:hover , #div2:hover , #div3:hover , #div4:hover
+{
+	background: linear-gradient( 135deg , darkslategray , lightslategray , darkslategray);
+	box-shadow: 1px 1px 10px 2px gray;
+	
+}
+
+
+</style>
+
+
+<div class="container" ng-controller="accountCtrl as acc">
+	<div class="row">
+	
+		<div class="col-xs-12 col-sm-3 col-sm-offset-1" style="margin-right: 0px;">
+				<div style="margin-top:20px ;border: 1px solid white; background-color: white; box-shadow: 1px 2px 5px gray; text-align:center; ">
+					<label>{{acc.userDetails.fname}}&nbsp;{{acc.userDetails.lname}}</label>
+					<hr style="border-bottom: 1px solid darkslategray; margin: 5px; box-shadow: 1px 1px 2px gray; ">
+					<img src="http://localhost:8085/chatroom/getPic/{{acc.userDetails.email}}/" style="width:100%; max-height:auto;" class="img-responsive img-rounded">
+					<hr style="border-bottom: 1px solid darkslategray; margin: 5px; box-shadow: 1px 1px 2px gray; "/>
+					<label>{{acc.userDetails.city}},&nbsp;{{acc.userDetails.country}}</label>
+				</div>
+		</div>
+		<div class="col-xs-12 col-sm-7">
+			<div id="div1" style="cursor: pointer ;background-color: #3498db ; text-align :center; padding: 30px;" ng-click="acc.getFriends()">
+				<label style="color: white;letter-spacing :1px;">Connect With Friends And Build A Network!</label>
+			</div>
+			<div id="div2" style="cursor: pointer ;margin-top: 4px; ;background-color:#58d68d ;  text-align :center; padding: 30px;" ng-click="acc.blogWrite()">
+				<label style="color:white; letter-spacing: 1px;">Write A Blog And Spread Your Views!</label>
+			</div>
+			<div id="div3" style="cursor: pointer ;margin-top: 4px; ;background-color: #f4d03f ;text-align :center; padding: 30px;"">
+				<label style="color:white; letter-spacing: 1px;">Apply For A Dream Job!</label>
+			</div>
+			<div id="div4" style="cursor: pointer ;margin-top: 4px; ;background-color: #e74c3c; text-align :center; padding: 30px;"">
+				<label style="color:white; letter-spacing: 1px;">Update Your Acoount!</label>
+			</div>
+			
+		</div>
+	</div>
+		
+</div>
+

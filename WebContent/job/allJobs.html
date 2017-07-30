@@ -1,0 +1,54 @@
+<div class="container" ng-controller="jobCtrl as job" ng-init="job.init(1); dontshow= true">
+		
+	<div class="container" ng-show="blog.listEmpty()" style=" border-radius :10px ;border:1px solid gray; padding: 20%; text-align:center;
+		 background : linear-gradient(135deg , white , #eee , Lavender, #eee , white); box-shadow: 1px 2px 7px 2px gray;">
+		
+			<label >NO JOBS CURRENTLY AVAILABLE!</label>
+		
+		</div>
+		
+		
+	<div class="panel panel-info"  ng-repeat="li in job.list">
+		<div class="panel-heading" style="font-family: courier; cursor: pointer;" ng-click="dontshow = !dontshow">
+			<div class="row">
+					<div class="col-xs-12 col-sm-6"><label>Company:</label>&nbsp;{{li.companyName}}</div>
+					<div class="col-xs-12 col-sm-3 col-sm-offset-3"><label>Location:</label>&nbsp;{{li.location}}</div>
+			</div>		
+		</div>
+		<div class="panel-body" style="font-family: courier;" ng-show="dontshow == true">
+			<div class="row" style="margin-bottom: 10px;">
+				<div class="col-xs-12">
+					<label>Description:</label>&nbsp;{{li.description}}
+				</div>		
+			</div>	
+			<div class="row" style="margin-bottom: 10px;">	
+				<div class="col-xs-12 col-sm-6">
+					<label>Qualification:</label>&nbsp;{{li.minQualification}}
+				</div>		
+				<div class="col-xs-12 col-sm-6">
+					<label>Title:</label>&nbsp;{{li.title}}
+				</div>		
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-3">
+					<label>Experience</label><br/>{{li.yearsOfExperience}}&nbsp;yrs
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<label>Location</label><br/>{{li.location}}
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<label>Posted By</label><br/>{{li.postedBy}}
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<label>Posted On</label><br/>{{li.postDate}}
+				</div>
+			</div>	
+		</div>
+		<div class="panel-footer" style="text-align:center;" ng-show="dontshow == true">
+				<button class="btn btn-info" ng-hide="job.ifApplied(li.id)" ng-click="job.apply( li.id)">APPLY</button>
+				<label ng-show="job.ifApplied(li.id)">Applied For This Job.</label>
+		</div>
+	</div>	
+	
+	
+</div>

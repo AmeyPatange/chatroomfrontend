@@ -1,0 +1,38 @@
+
+
+<div class="container" ng-controller="blogCtrl as blog">
+	<div class="panel panel-info">
+		<div class="panel-heading" style="text-align:center;">
+			<label>BLOG DETAILS</label>
+			</div>
+		<form name="blogpost" ng-submit="blog.postBlog()">
+			<div class="panel-body">
+					<div class="row" style="margin-left: 5px; ">
+						
+							<div class="col-xs-12 col-sm-4">
+								<div class="row">
+									<label>Title</label><br/>
+									<textarea class="form-control" name="blogTitle" rows="5" style="padding:5px; font-family: Monospace;" required ng-model="blog.post.blogTitle">
+									</textarea>
+									<span ng-show="blogpost.blogTitle.$dirty &&  blogpost.blogTitle.$error.required" style="color: red;">Invalid!</span>
+								</div>
+								<div class="col-xs-12 col-sm-12" style="text-align: center;">
+									<hr />
+									<button ng-disabled="blogpost.$invalid" class="bt btn-info btn-lg" style="opacity: 0.8;">POST BLOG</button>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-8">
+								<label>Content</label><br/>
+								<textarea class="form-control" name="blogContent" required rows="15" style="padding:5px; font-family: Monospace;" ng-model="blog.post.blogContent"></textarea>
+								<span ng-show="blogpost.blogContent.$dirty && blogpost.blogContent.$error.required" style="color: red;">Invalid!</span>
+								
+							</div>
+						
+							
+						</div>
+		
+			</div>
+		</form>
+	</div>
+	
+</div>

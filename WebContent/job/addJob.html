@@ -1,0 +1,60 @@
+
+<div class="container" ng-controller="jobCtrl as jb">
+		<div class="panel panel-info">
+				
+				<div class="panel-heading" style="text-align:center;">
+					<label>Enter Job Details</label>
+				</div>
+				<form name="jobForm" ng-submit="jb.addJob()">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<label>Title</label>
+							<input type="text" name="title" ng-model="jb.job.title" required ng-minlength="2"  ng-maxlength="50"/>
+							<span ng-show="jobForm.title.$dirty && (jobForm.title.$error.required || jobForm.title.$error.minlength || jobForm.title.$error.maxlength)" style="color:coral;">Invalid!</span>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<label>Company Name</label>
+							<input type="text" name="companyName" ng-model="jb.job.companyName" ng-minlength="2"  ng-maxlength="50" required/>
+							<span  ng-show="jobForm.companyName.$dirty && (jobForm.companyName.$error.required || jobForm.companyName.$error.minlength || jobForm.companyName.$error.maxlength)" style="color:coral;" >Invalid!</span>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-12 col-sm-4">
+							<label>Location</label>
+							<input type="text" name="location" ng-model="jb.job.location" ng-minlength="2"  ng-maxlength="50"  required/>
+							<span ng-show="jobForm.location.$dirty && (jobForm.location.$error.required || jobForm.location.$error.minlength || jobForm.location.$error.maxlength)" style="color:coral;" >Invalid!</span>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<label>Minimum Qualification</label>
+							<select ng-model="jb.job.minQualification" name="minQualification" required>
+								<option value="Post-Graduate" selected>Post-Graduate</option>
+								<option value="Graduate">Graduate</option>
+								<option value="Under-Graduate">Under-Graduate</option>
+							</select>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<label>Experience</label>
+							<select ng-model="jb.job.yearsOfExperience" name="yearsOfExperience" required>
+								<option value="0-1">Less Than 1 year</option>
+								<option value="2-4" selected>2 to 4 years</option>
+								<option value="5-8">5 to 8 years</option>
+								<option value="8 +">More Than 8</option>
+							</select>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+						<label>Description</label>
+						<textarea style="width: 100%;" rows="3" ng-model="jb.job.description" name="description" required></textarea>
+					</div>
+					
+					
+				</div>
+					<div class="panel-footer" style="text-align:center;">
+						<input type="submit" class="btn btn-success" value="ADD">
+					</div>
+				</form>
+		</div>
+</div>

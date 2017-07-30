@@ -1,0 +1,58 @@
+<div class="container" ng-controller="jobCtrl as job" ng-init="job.pendingJobs()">
+
+	<div ng-repeat="p in job.penList">
+		
+		<div class="panel panel-success">
+			<div class="panel-heading" >
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<label>Title:</label> {{p.title}}
+					</div>
+					<div class="col-xs-12 col-sm-6">
+						<label>Company Name:</label> {{p.companyName}}
+					</div>
+				</div>
+				
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-xs-12">
+						<label>Description:</label> {{p.description}}
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<label>Location:</label> {{p.location}}
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<label>Minimum Experience:</label> {{p.yearsOfExperience}}
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<label>Qualification:</label> {{p.minQualification}}
+					</div>
+					
+					
+				</div>
+				
+				<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<label>Posted On:</label> {{p.postDate}}
+						</div>
+					
+				</div>	
+				<div class="row" style="margin-top:10px;">
+					<div class="col-xs-12 col-sm-6">
+							<label>Posted By:</label> {{p.postedBy}}&nbsp;&nbsp;
+						 	<img style="position:absolute;"  src="http://localhost:8085/chatroom/getPic/{{p.postedBy}}/" height="35px" width="35px" class="img-circle"/>
+					 </div>
+				
+				</div>
+			</div>
+			<div class="panel-footer">
+					<div style="text-align:center;">
+							<button ng-click="job.enableBlog(p.id , 'Y')" class="btn btn-success">ENABLE</button>			
+					</div>
+			</div>
+			
+		</div>
+
+	</div>
+</div>

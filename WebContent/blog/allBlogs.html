@@ -1,0 +1,51 @@
+<style>
+small
+{
+	font-family: helvetica;
+}
+.zero {
+   text-indent: -7px;   
+}
+
+</style>
+<div class="container" ng-controller="blogCtrl as blog">
+	
+	<div ng-init="blog.init(2); dontshow=false; showComment = false;">
+		<div class="panel panel-info" ng-repeat="b in blog.list" style="text-align: center;">
+			<div class="panel-heading" id="myTitle" style="cursor:pointer" ng-click="dontshow = !dontshow">
+				<label style="cursor:pointer;">{{b.blogTitle}} &nbsp;</label>
+				<br/>
+			</div>
+			
+   			<div class="panel-body" style="border-left: 1px solid skyblue ; border-right: 1px solid skyblue;
+   											margin: 5px;" ng-show="dontshow">
+   			
+   				<small>{{b.blogContent}}</small>
+   				<br/><br/>
+   				<div class="row" style="border: 1px solid skyblue; border-radius: 10px; border-left: none; border-right: none;">
+   					<div class="col-xs-12 col-sm-5">
+   						<label><small>Posted On: </small>{{b.blogCreateDate}}</label>
+					</div>
+   					<div class="col-xs-12 col-sm-6">
+   						<label><small>Posted By: </small>{{b.postedBy}}</label>
+					</div>	
+   				</div>
+   			</div>
+   			<div class="panel-footer" ng-show="dontshow" style="text-align:left;">
+   				
+   				<label>Reply </label> &nbsp;&nbsp;<textarea style="border: none;border-bottom:1px solid skyblue; width:80%;" rows="3" ng-model="b.comment"></textarea>
+   				<sup><sup><sup><button  ng-click="blog.addComment(b.blog_id , b.comment)" class="btn btn-success"><span class="glyphicon glyphicon-send"></span></button></sup></sup></sup>
+   				<br/><label>Comments <span title="Click To Toggle Comments"  style="cursor: pointer;" class="glyphicon glyphicon-menu-hamburger" ng-click="showComment = !showComment &&  blog.getComments(b.blog_id)"></span></label>
+   				<div ng-show="showComment" ng-repeat="blg in blog.comment">
+   					<div ng-if="b.blog_id == blg.blogid">{{blg.blogComment}}<br/>
+   						<div style="text-align:right;"><label>By:{{blg.fname_commentBy}} &nbsp;&nbsp;&nbsp;</label>
+   														<label>On:{{blg.commentDate}}</label></div>
+   					</div>
+   				</div>
+   				
+   			</div>
+		</div>
+	
+	</div>
+
+</div>
